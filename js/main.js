@@ -38,6 +38,23 @@ function getInputValues() {
   displayProducts();
   clearForm();
 
+  const Toast = Swal.mixin({
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+      toast.addEventListener('mouseenter', Swal.stopTimer)
+      toast.addEventListener('mouseleave', Swal.resumeTimer)
+    }
+  })
+  
+  Toast.fire({
+    icon: 'success',
+    title: 'Add in successfully'
+  })
+
 }
 
 function getUpdate(){
@@ -54,9 +71,26 @@ function getUpdate(){
   displayProducts();
   clearForm()
 
+
   addProdact.classList.replace('d-none' , 'd-block')
   btnUpdate.classList.replace("d-block" , "d-none")
 
+  const Toast = Swal.mixin({
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+      toast.addEventListener('mouseenter', Swal.stopTimer)
+      toast.addEventListener('mouseleave', Swal.resumeTimer)
+    }
+  })
+  
+  Toast.fire({
+    icon: 'success',
+    title: 'Update in successfully'
+  })
 
 }
 
@@ -96,9 +130,30 @@ function clearForm(){
 
 
 function deletElement(index){
-  allProduct.splice(index,1)
-  displayProducts()
-  localStorage.setItem( "allProduct" , JSON.stringify( allProduct ));
+
+  Swal.fire({
+    title: 'Are you sure?',
+    text: "You won't be able to revert this!",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Yes, delete it!'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      Swal.fire(
+        'Deleted!',
+        'Your file has been deleted.',
+        'success'
+        
+      )
+      allProduct.splice(index,1)
+      displayProducts()
+      localStorage.setItem( "allProduct" , JSON.stringify( allProduct ));
+    }
+  })
+  
+  
 }
 
 
