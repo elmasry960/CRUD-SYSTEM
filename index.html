@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <title>Document</title>
+</head>
+<body class="bg-dark text-white">
+  
+  <div class="w-75 m-auto py-5">
+
+    <label for="pn">Product Name</label>
+    <input type="text" class="form-control" id="pn">
+
+    <label class="mt-3" for="pp">Product Price</label>
+    <input type="text" class="form-control" id="pp">
+
+    <label class="pt-3" for="pc">Product Category</label>
+    <input type="text" class="form-control" id="pc">
+
+
+    <label class="mt-3" for="pd">Product Description</label>
+    <textarea class="form-control" id="pd"></textarea>
+
+    <button onclick="getInputValues();" class="btn btn-primary btn-lg mt-4" id="addProdact">ADD</button>
+    <button onclick="getUpdate();" class="btn btn-warning btn-lg mt-4 d-none" id="update">Update</button>
+  </div>
+
+
+
+  <div class="w-75 m-auto">
+
+    <label for="">Search:</label>
+    <input onkeyup="search(this.value)" type="search" placeholder="Search" id="src" class="form-control mb-5 mt-2">
+
+    <table class="table text-white">
+    
+      <thead>
+        <tr>
+          <th>Index</th>
+          <th>Product Name</th>
+          <th>Product Price</th>
+          <th>Product Category</th>
+          <th>Product Description</th>
+          <th>Update</th>
+          <th>Delet</th>
+        </tr>
+      </thead>
+
+      <tbody id="data">
+        
+
+      </tbody>
+    
+    </table>
+  </div>
+
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
